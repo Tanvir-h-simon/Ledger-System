@@ -280,4 +280,3 @@ Worth confirming with your groupmate or lecturer before you build these:
 
 ## Team
 - Tanvir Hossain
-- *(add your groupmates here)*
