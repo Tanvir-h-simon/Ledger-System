@@ -273,11 +273,6 @@ LedgerSystem/
 10. `ChartService` plus charts view (pie, line, bar)
 11. Polish: validation messages, empty states, confirmation dialogs
 
-**Phase 3: Database migration**
-12. Set up local MySQL, create tables matching the CSV schema
-13. Write `MySql*Repository` classes implementing the existing interfaces
-14. Point the app at the MySQL repositories, CSV files become a fallback or are dropped
-
 ## Open Design Questions
 
 Worth confirming with your groupmate or lecturer before you build these:
