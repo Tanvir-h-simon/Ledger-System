@@ -1,0 +1,287 @@
+/* ----- Root ----- */
+.root {
+    -fx-background-color: #f7f9fc;
+    -fx-font-family: "Segoe UI", "Arial", sans-serif;
+    -fx-font-size: 13px;
+}
+
+/* ===================== CARDS ===================== */
+.card {
+    -fx-background-color: #ffffff;
+    -fx-background-radius: 10;
+    -fx-border-color: #e2e8f0;
+    -fx-border-width: 1.5;
+    -fx-border-radius: 10;
+    -fx-padding: 22;
+}
+
+/* Large number displayed inside a card (e.g. balance, savings total) */
+.card-value {
+    -fx-font-size: 30px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #212121;
+}
+
+/* Muted label above or below a card value */
+.card-title {
+    -fx-font-size: 13px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #a3abb5;
+}
+
+.card-subtitle {
+    -fx-font-size: 12px;
+    -fx-text-fill: #a3abb5;
+}
+
+/* Green "Active" pill badge */
+.pill-active {
+    -fx-background-color: #e8f5e9;
+    -fx-text-fill: #4caf50;
+    -fx-font-weight: bold;
+    -fx-font-size: 11px;
+    -fx-background-radius: 20;
+    -fx-padding: 3 10;
+}
+
+/* ===================== NAV SIDEBAR ===================== */
+
+/* Transparent nav items, light gray text */
+.button.nav-btn {
+    -fx-background-color: transparent;
+    -fx-text-fill: #a3abb5;
+    -fx-font-size: 13px;
+    -fx-padding: 11 16;
+    -fx-border-radius: 8;
+    -fx-background-radius: 8;
+    -fx-alignment: CENTER_LEFT;
+    -fx-font-weight: normal;
+    -fx-cursor: hand;
+    -fx-effect: null;
+    -fx-pref-height: 42px;
+}
+
+.button.nav-btn:hover {
+    -fx-background-color: #1f344e;
+    -fx-text-fill: #ffffff;
+}
+
+/* Logout button (red tint) */
+.button.logout-btn {
+    -fx-background-color: transparent;
+    -fx-text-fill: #f87171;
+    -fx-font-size: 13px;
+    -fx-padding: 11 16;
+    -fx-border-radius: 8;
+    -fx-background-radius: 8;
+    -fx-alignment: CENTER_LEFT;
+    -fx-cursor: hand;
+    -fx-effect: null;
+    -fx-pref-height: 42px;
+}
+
+.button.logout-btn:hover {
+    -fx-background-color: rgba(248, 113, 113, 0.15);
+}
+
+/* ===================== INPUTS ===================== */
+.text-field,
+.password-field {
+    -fx-background-color: #ffffff;
+    -fx-border-color: #e2e8f0;
+    -fx-border-width: 1.5;
+    -fx-border-radius: 8;
+    -fx-background-radius: 8;
+    -fx-padding: 9 14;
+    -fx-font-size: 13px;
+    -fx-pref-height: 40px;
+    -fx-text-fill: #212121;
+    -fx-prompt-text-fill: #a3abb5;
+}
+
+.text-field:focused,
+.password-field:focused {
+    -fx-border-color: #3b82f6;
+    -fx-effect: dropshadow(gaussian, rgba(59, 130, 246, 0.20), 8, 0, 0, 0);
+}
+
+/* ===================== BUTTONS ===================== */
+.button {
+    -fx-background-color: #3b82f6;
+    -fx-text-fill: white;
+    -fx-border-radius: 8;
+    -fx-background-radius: 8;
+    -fx-padding: 10 24;
+    -fx-font-size: 13px;
+    -fx-font-weight: bold;
+    -fx-cursor: hand;
+    -fx-pref-height: 40px;
+    -fx-effect: dropshadow(gaussian, rgba(59, 130, 246, 0.30), 8, 0, 0, 2);
+}
+
+.button:hover {
+    -fx-background-color: #2563eb;
+}
+
+.button:pressed {
+    -fx-background-color: #1d4ed8;
+    -fx-effect: null;
+}
+
+/* ===================== COMBO BOX ===================== */
+.combo-box {
+    -fx-background-color: #ffffff;
+    -fx-border-color: #e2e8f0;
+    -fx-border-width: 1.5;
+    -fx-border-radius: 8;
+    -fx-background-radius: 8;
+    -fx-pref-height: 40px;
+    -fx-font-size: 13px;
+}
+
+/* Make the display area (the button part) white */
+.combo-box .combo-box-base {
+    -fx-background-color: #ffffff;
+}
+
+/* White background for the selected value text shown inside the box */
+.combo-box .list-cell {
+    -fx-background-color: #ffffff;
+    -fx-text-fill: #1e293b;
+    -fx-padding: 6 12;
+}
+
+.combo-box:focused {
+    -fx-border-color: #3b82f6;
+}
+
+/* Dropdown popup list */
+.combo-box-popup .list-view .list-cell {
+    -fx-background-color: #ffffff;
+    -fx-text-fill: #1e293b;
+}
+
+.combo-box-popup .list-view .list-cell:hover {
+    -fx-background-color: #eff6ff;
+}
+
+.combo-box-popup .list-view .list-cell:selected {
+    -fx-background-color: #3b82f6;
+    -fx-text-fill: #ffffff;
+}
+
+/* ===================== LIST VIEW ===================== */
+.list-view {
+    -fx-background-color: #ffffff;
+    -fx-border-color: #e2e8f0;
+    -fx-border-width: 1.5;
+    -fx-border-radius: 8;
+    -fx-background-radius: 8;
+    -fx-font-size: 12px;
+    -fx-font-family: "Consolas", "Courier New", monospace;
+}
+
+.list-cell {
+    -fx-padding: 9 14;
+    -fx-text-fill: #334155;
+    -fx-background-color: #ffffff;
+}
+
+.list-cell:odd {
+    -fx-background-color: #f8fafc;
+}
+
+.list-cell:hover {
+    -fx-background-color: #eff6ff;
+}
+
+.list-cell:selected {
+    -fx-background-color: #3b82f6;
+    -fx-text-fill: #ffffff;
+}
+
+/* ===================== TABLE VIEW ===================== */
+.table-view {
+    -fx-background-color: transparent;
+    -fx-border-color: #e2e8f0;
+    -fx-border-width: 1.5;
+    -fx-border-radius: 8;
+    -fx-background-radius: 8;
+    -fx-font-size: 13px;
+}
+
+.table-view .column-header-background {
+    -fx-background-color: #f8fafc;
+    -fx-border-color: transparent transparent #e2e8f0 transparent;
+    -fx-border-width: 0 0 1.5 0;
+}
+
+.table-view .column-header .label {
+    -fx-text-fill: #64748b;
+    -fx-font-weight: bold;
+    -fx-font-size: 12px;
+}
+
+.table-row-cell {
+    -fx-cell-size: 42px;
+    -fx-background-color: #ffffff;
+    -fx-border-color: transparent transparent #f1f5f9 transparent;
+}
+
+.table-row-cell:odd {
+    -fx-background-color: #fafbfc;
+}
+
+.table-row-cell:selected {
+    -fx-background-color: #eff6ff;
+    -fx-text-fill: #1e293b;
+}
+
+.table-row-cell:hover {
+    -fx-background-color: #f0f9ff;
+}
+
+/* ===================== TABS ===================== */
+.tab-pane .tab-header-area .tab-header-background {
+    -fx-background-color: #f1f5f9;
+    -fx-border-color: transparent transparent #e2e8f0 transparent;
+    -fx-border-width: 0 0 1.5 0;
+}
+
+.tab {
+    -fx-background-color: transparent;
+    -fx-padding: 8 20;
+    -fx-cursor: hand;
+}
+
+.tab:selected {
+    -fx-background-color: #3b82f6;
+    -fx-background-radius: 6 6 0 0;
+}
+
+.tab .tab-label {
+    -fx-text-fill: #64748b;
+    -fx-font-size: 13px;
+    -fx-font-weight: bold;
+}
+
+.tab:selected .tab-label {
+    -fx-text-fill: #ffffff;
+}
+
+/* ===================== SCROLLBAR ===================== */
+.scroll-bar:vertical .thumb,
+.scroll-bar:horizontal .thumb {
+    -fx-background-color: #cbd5e1;
+    -fx-background-radius: 4;
+}
+
+.scroll-bar .track {
+    -fx-background-color: transparent;
+}
+
+.scroll-bar .increment-button,
+.scroll-bar .decrement-button {
+    -fx-background-color: transparent;
+    -fx-padding: 0;
+}

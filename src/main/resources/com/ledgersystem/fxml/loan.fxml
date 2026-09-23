@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+
+<!--
+    Loan page: compacted to fit full height without scrollbar.
+    Field labels removed — promptText inside each field is descriptive enough.
+    Spacing reduced to 10 so both sections fit comfortably.
+-->
+<StackPane style="-fx-background-color: #f7f9fc; -fx-padding: 24 40;"
+           xmlns="http://javafx.com/javafx/21"
+           xmlns:fx="http://javafx.com/fxml/1"
+           fx:controller="com.ledgersystem.controller.LoanController">
+
+    <VBox spacing="10" maxWidth="580" alignment="TOP_LEFT"
+          style="-fx-background-color: white;
+                 -fx-background-radius: 10;
+                 -fx-border-color: #e2e8f0;
+                 -fx-border-width: 1.5;
+                 -fx-border-radius: 10;">
+        <padding>
+            <Insets top="28" right="36" bottom="28" left="36"/>
+        </padding>
+
+        <Label text="Loan Manager"
+               style="-fx-font-size: 18px; -fx-font-weight: bold; -fx-text-fill: #1e293b;"/>
+
+        <!-- Current loan status (compact 4-line info panel) -->
+        <VBox spacing="4"
+              style="-fx-background-color: #eff6ff; -fx-background-radius: 8; -fx-padding: 14;">
+            <Label fx:id="loanStatusLabel"
+                   style="-fx-font-size: 13px; -fx-font-weight: bold; -fx-text-fill: #1d4ed8;"/>
+            <Label fx:id="loanBankLabel"      style="-fx-text-fill: #374151;"/>
+            <Label fx:id="loanBalanceLabel"
+                   style="-fx-font-weight: bold; -fx-text-fill: #1d4ed8;"/>
+            <Label fx:id="loanDueDateLabel"   style="-fx-text-fill: #374151;"/>
+            <!-- Hidden labels still needed by the controller -->
+            <Label fx:id="loanPrincipalLabel" managed="false" visible="false"/>
+        </VBox>
+
+        <Separator/>
+
+        <Label text="Apply for a Loan"
+               style="-fx-font-size: 14px; -fx-font-weight: bold; -fx-text-fill: #1e293b;"/>
+
+        <!-- No field labels — promptText is descriptive -->
+        <ComboBox fx:id="bankBox" promptText="Select Bank" maxWidth="Infinity"/>
+        <TextField fx:id="principalField" promptText="Principal amount (e.g. 5000)" maxWidth="Infinity"/>
+        <TextField fx:id="monthsField"    promptText="Repayment period (months, e.g. 12)" maxWidth="Infinity"/>
+        <Button text="Apply for Loan" maxWidth="Infinity" onAction="#handleApplyLoan"/>
+
+        <Separator/>
+
+        <Label text="Make a Repayment"
+               style="-fx-font-size: 14px; -fx-font-weight: bold; -fx-text-fill: #1e293b;"/>
+
+        <TextField fx:id="repayAmountField" promptText="Amount to repay" maxWidth="Infinity"/>
+        <Button text="Make Repayment" maxWidth="Infinity" onAction="#handleRepay"
+                style="-fx-background-color: #16a34a;"/>
+
+        <Label fx:id="messageLabel" wrapText="true"/>
+    </VBox>
+
+</StackPane>

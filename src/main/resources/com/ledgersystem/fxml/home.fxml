@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.chart.PieChart?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+
+<!--
+    Home Dashboard View.
+    Layout: Welcome → Row 1 (Balance + Savings cards) → Row 2 (Pie chart + Transactions table)
+-->
+<ScrollPane fitToWidth="true"
+            style="-fx-background-color: transparent; -fx-border-color: transparent;"
+            xmlns="http://javafx.com/javafx/21"
+            xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="com.ledgersystem.controller.HomeController">
+    <content>
+        <VBox spacing="20">
+            <padding>
+                <Insets top="28" right="28" bottom="28" left="28"/>
+            </padding>
+
+            <!-- ===== Welcome Row ===== -->
+            <VBox spacing="4">
+                <Label fx:id="welcomeLabel"
+                       style="-fx-font-size: 22px; -fx-font-weight: bold; -fx-text-fill: #212121;"/>
+                <Label text="Here's your financial overview"
+                       style="-fx-font-size: 13px; -fx-text-fill: #a3abb5;"/>
+            </VBox>
+
+            <!-- ===== Row 1: Balance Card + Savings Card ===== -->
+            <HBox spacing="20">
+
+                <!-- Balance Card -->
+                <VBox spacing="8" styleClass="card" HBox.hgrow="ALWAYS">
+                    <Label text="💵  Total Balance" styleClass="card-title"/>
+                    <Label fx:id="balanceLabel" styleClass="card-value" text="0.00"
+                           style="-fx-text-fill: #3b82f6;"/>
+                    <Label text="Current account balance" styleClass="card-subtitle"/>
+                </VBox>
+
+                <!-- Savings Card -->
+                <VBox spacing="8" styleClass="card" HBox.hgrow="ALWAYS">
+                    <HBox alignment="CENTER_LEFT" spacing="10">
+                        <Label text="💰  Savings Balance" styleClass="card-title"/>
+                        <Label fx:id="savingsPillLabel" text="● Active" styleClass="pill-active"/>
+                    </HBox>
+                    <Label fx:id="savingsLabel" styleClass="card-value" text="0.00"
+                           style="-fx-text-fill: #4caf50;"/>
+                    <Label fx:id="savingsInfoLabel" styleClass="card-subtitle"/>
+                </VBox>
+
+            </HBox>
+
+            <!-- ===== Row 2: Pie Chart Card + Recent Transactions Card ===== -->
+            <HBox spacing="20" VBox.vgrow="ALWAYS">
+
+                <!-- Spending Pie Chart Card (fixed width) -->
+                <VBox spacing="10" styleClass="card" minWidth="320" maxWidth="360">
+                    <Label text="Spending by Category"
+                           style="-fx-font-size: 14px; -fx-font-weight: bold; -fx-text-fill: #212121;"/>
+                    <Label text="Based on credit transactions"
+                           styleClass="card-subtitle"/>
+                    <PieChart fx:id="spendingChart" prefHeight="260" legendVisible="true" animated="true"/>
+                </VBox>
+
+                <!-- Recent Transactions Card (fills remaining space) -->
+                <VBox spacing="10" styleClass="card" HBox.hgrow="ALWAYS">
+                    <Label text="Recent Transactions"
+                           style="-fx-font-size: 14px; -fx-font-weight: bold; -fx-text-fill: #212121;"/>
+                    <Label text="Last 5 transactions — newest first"
+                           styleClass="card-subtitle"/>
+
+                    <TableView fx:id="transactionTable" VBox.vgrow="ALWAYS" minHeight="260">
+                        <columns>
+                            <TableColumn fx:id="dateColumn"   text="Date"        minWidth="100"/>
+                            <TableColumn fx:id="descColumn"   text="Description" minWidth="180"/>
+                            <TableColumn fx:id="amountColumn" text="Amount"      minWidth="90"/>
+                            <TableColumn fx:id="typeColumn"   text="Type"        minWidth="70"/>
+                        </columns>
+                    </TableView>
+                </VBox>
+
+            </HBox>
+        </VBox>
+    </content>
+</ScrollPane>

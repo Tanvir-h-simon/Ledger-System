@@ -1,0 +1,455 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}</style><style>:root{color-scheme:light dark;--md-bg:#fff;--md-text:rgba(0,0,0,.8);--md-muted:rgba(0,0,0,.6);--md-fill:rgba(0,0,0,.04);--md-fill-strong:rgba(0,0,0,.06);--md-rule:rgba(0,0,0,.1);--md-rule-strong:rgba(0,0,0,.16);--md-link:hsl(210 100% 45%)}@media (prefers-color-scheme:dark){:root:where(:not([data-theme="light"])){--md-bg:#0d0d0d;--md-text:rgba(255,255,255,.85);--md-muted:rgba(255,255,255,.6);--md-fill:rgba(255,255,255,.06);--md-fill-strong:rgba(255,255,255,.09);--md-rule:rgba(255,255,255,.14);--md-rule-strong:rgba(255,255,255,.22);--md-link:hsl(210 100% 72%)}}:root[data-theme="dark"]{color-scheme:dark;--md-bg:#0d0d0d;--md-text:rgba(255,255,255,.85);--md-muted:rgba(255,255,255,.6);--md-fill:rgba(255,255,255,.06);--md-fill-strong:rgba(255,255,255,.09);--md-rule:rgba(255,255,255,.14);--md-rule-strong:rgba(255,255,255,.22);--md-link:hsl(210 100% 72%)}:root[data-theme="light"]{color-scheme:light}@media print{:root,:root[data-theme="dark"]{color-scheme:light;--md-bg:#fff;--md-text:rgba(0,0,0,.8);--md-muted:rgba(0,0,0,.6);--md-fill:rgba(0,0,0,.04);--md-fill-strong:rgba(0,0,0,.06);--md-rule:rgba(0,0,0,.1);--md-rule-strong:rgba(0,0,0,.16);--md-link:hsl(210 100% 45%)}}body{background:var(--md-bg);color:var(--md-text);max-width:720px;margin:0 auto;padding:32px;display:flex;flex-direction:column;gap:10px;font:14px/1.55 -apple-system,BlinkMacSystemFont,'SF Pro','Segoe UI',sans-serif;overflow-wrap:break-word}body>:first-child{margin-top:0}h1,h2,h3,h4,h5,h6{margin:6px 0 0;line-height:1.25;font-weight:600;text-wrap:balance}h1{font-size:1.35em}h2{font-size:1.15em;color:var(--md-muted)}h3,h4,h5,h6{font-size:1em}p,ul,ol,blockquote,table,pre,hr{margin:0}strong{font-weight:600}a{color:var(--md-link);text-decoration:none}a:hover{text-decoration:underline}ul,ol{display:flex;flex-direction:column;gap:6px;padding-left:22px}ul{list-style:disc}ol{list-style:decimal}:is(li,td,th)>*+:is(p,ul,ol,blockquote){margin-top:6px}blockquote{display:flex;flex-direction:column;gap:10px;border-left:2px solid var(--md-rule);padding-left:10px;color:var(--md-muted)}:not(pre)>code{background:var(--md-fill);padding:1px 3px;border-radius:4px;font:.92em 'SF Mono',ui-monospace,Menlo,Consolas,monospace}a>code{background:none;color:inherit}pre{background:var(--md-fill);padding:10px 12px;border-radius:6px;overflow-x:auto;font:12px/1.5 'SF Mono',ui-monospace,Menlo,Consolas,monospace;margin-block:4px}pre code{background:none;padding:0;font:inherit}table{width:100%;border-collapse:separate;border-spacing:2px;font:inherit}th,td{padding:6px 8px;border-radius:3px;text-align:left;vertical-align:top}th{background:var(--md-fill-strong);font-weight:600}td{background:var(--md-fill)}:is(th,td) :not(pre)>code{background:transparent}hr{border:0;border-top:1px solid var(--md-rule-strong);margin-block:10px}img{max-width:100%;height:auto;border-radius:4px}</style>
+</head><body>
+<h1>Ledger System</h1>
+<p><img src="https://img.shields.io/badge/Java-17-orange" alt="Java">
+<img src="https://img.shields.io/badge/GUI-JavaFX-blue" alt="GUI">
+<img src="https://img.shields.io/badge/Build-Maven-red" alt="Build">
+<img src="https://img.shields.io/badge/Storage-CSV%20to%20MySQL-lightgrey" alt="Storage"></p>
+<p>A desktop personal finance ledger built for WIX1002 (Assignment Topic 2). Users register, log in, record debits and credits, track savings, take out loans, predict deposit interest, and view their transaction history with filtering, sorting, and charts.</p>
+<h2>Table of Contents</h2>
+<ul>
+<li><a href="#features">Features</a></li>
+<li><a href="#tech-stack">Tech Stack</a></li>
+<li><a href="#architecture">Architecture</a></li>
+<li><a href="#data-model">Data Model</a></li>
+<li><a href="#data-storage-csv-now-database-later">Data Storage: CSV Now, Database Later</a></li>
+<li><a href="#gui-design">GUI Design</a></li>
+<li><a href="#validation-rules">Validation Rules</a></li>
+<li><a href="#project-structure">Project Structure</a></li>
+<li><a href="#getting-started">Getting Started</a></li>
+<li><a href="#development-roadmap">Development Roadmap</a></li>
+<li><a href="#open-design-questions">Open Design Questions</a></li>
+<li><a href="#team">Team</a></li>
+</ul>
+<h2>Features</h2>
+<p><strong>Core (8 marks)</strong></p>
+<ul>
+<li><input disabled="" type="checkbox"> User registration and login</li>
+<li><input disabled="" type="checkbox"> Record debit and credit transactions</li>
+<li><input disabled="" type="checkbox"> Savings with auto-transfer at month end</li>
+<li><input disabled="" type="checkbox"> View account balance</li>
+<li><input disabled="" type="checkbox"> Transaction history by month</li>
+<li><input disabled="" type="checkbox"> Logout</li>
+<li><input disabled="" type="checkbox"> Credit loan (apply and repay)</li>
+<li><input disabled="" type="checkbox"> Deposit interest predictor</li>
+</ul>
+<p><strong>Extra features (all 5)</strong></p>
+<ul>
+<li><input disabled="" type="checkbox"> Filtering and sorting on history</li>
+<li><input disabled="" type="checkbox"> Graphical user interface (JavaFX)</li>
+<li><input disabled="" type="checkbox"> Password hashing (bcrypt)</li>
+<li><input disabled="" type="checkbox"> Data visualization with charts</li>
+<li><input disabled="" type="checkbox"> Loan repayment reminder system</li>
+</ul>
+<h2>Tech Stack</h2>
+<table>
+<thead>
+<tr>
+<th>Layer</th>
+<th>Choice</th>
+<th>Why</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Language</td>
+<td>Java 17</td>
+<td>Course requirement</td>
+</tr>
+<tr>
+<td>GUI</td>
+<td>JavaFX (FXML + CSS)</td>
+<td>Modern successor to Swing. Separates layout (FXML) and styling (CSS) from logic, closer to how real frontend teams work, and gives you exposure to a more current toolkit. Ships with its own chart components (PieChart, LineChart, BarChart), which covers the Data Visualization extra without a third-party library.</td>
+</tr>
+<tr>
+<td>Build tool</td>
+<td>Maven</td>
+<td>Manages the JavaFX and bcrypt dependencies, standard for real Java projects</td>
+</tr>
+<tr>
+<td>Storage (Phase 1)</td>
+<td>CSV files</td>
+<td>Matches the brief, no server setup needed while the rest of the app is built</td>
+</tr>
+<tr>
+<td>Storage (Phase 2)</td>
+<td>MySQL</td>
+<td>Free, lightweight local setup (MySQL Community Server), huge documentation base, and the database most commonly used in student and industry projects. Oracle works too if your course specifically requires it, but it is heavier to install locally for no real benefit here.</td>
+</tr>
+<tr>
+<td>Password hashing</td>
+<td>jBCrypt</td>
+<td>Simple, well-known bcrypt wrapper for Java</td>
+</tr>
+</tbody>
+</table>
+<p>JavaFX needs one extra setup step Swing would not: since Java 11 it is not bundled with the JDK, so it is added as a Maven dependency (<code>org.openjfx:javafx-controls</code>, <code>javafx-fxml</code>) plus a small Maven plugin to run it. IntelliJ handles this without much friction once <code>pom.xml</code> is set up.</p>
+<h2>Architecture</h2>
+<p>Four layers. The important part for the CSV-to-database plan: the Service layer talks to repository <em>interfaces</em>, never to CSV or SQL code directly. That is what lets you swap the storage implementation later without touching business logic or the GUI.</p>
+<pre class="mermaid">flowchart TD
+    A[View Layer - FXML Views and Controllers] --&gt; B[Service Layer - Business Logic]
+    B --&gt; C{{Repository Interfaces}}
+    C --&gt; D[CSV Implementation - Phase 1, active now]
+    C -. swap later .-&gt; E[MySQL Implementation - Phase 2]
+    D --&gt; F[(CSV Files)]
+    E -.-&gt; G[(MySQL Database)]
+</pre>
+<table>
+<thead>
+<tr>
+<th>Layer</th>
+<th>Job</th>
+<th>Never does</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>View (FXML + Controllers)</td>
+<td>Show screens, collect input, display results and charts</td>
+<td>Calculate balances, read/write data</td>
+</tr>
+<tr>
+<td>Service</td>
+<td>Validation, calculations, business rules</td>
+<td>Know about FXML or UI components</td>
+</tr>
+<tr>
+<td>Repository (interface)</td>
+<td>Define what data operations exist</td>
+<td>Care which storage is behind it</td>
+</tr>
+<tr>
+<td>Repository (CSV impl)</td>
+<td>Read/write CSV files, generate IDs</td>
+<td>Contain business logic</td>
+</tr>
+<tr>
+<td>Repository (MySQL impl, Phase 2)</td>
+<td>Run SQL against MySQL</td>
+<td>Contain business logic</td>
+</tr>
+</tbody>
+</table>
+<h2>Data Model</h2>
+<pre class="mermaid">classDiagram
+    class User {
+        -int userId
+        -String name
+        -String email
+        -String passwordHash
+    }
+    class Transaction {
+        -int transactionId
+        -int userId
+        -String type
+        -double amount
+        -String category
+        -String description
+        -LocalDate date
+    }
+    class Savings {
+        -int savingsId
+        -int userId
+        -boolean active
+        -int percentage
+    }
+    class Loan {
+        -int loanId
+        -int userId
+        -double principalAmount
+        -double interestRate
+        -int repaymentPeriodMonths
+        -double outstandingBalance
+        -String status
+        -LocalDate createdAt
+    }
+    class Bank {
+        -int bankId
+        -String bankName
+        -double interestRate
+    }
+    User &#34;1&#34; --&gt; &#34;*&#34; Transaction : owns
+    User &#34;1&#34; --&gt; &#34;0..1&#34; Savings : has
+    User &#34;1&#34; --&gt; &#34;*&#34; Loan : owns
+</pre>
+<p><code>Transaction</code> gets a <code>category</code> field (Food, Rent, Transport, Other, and so on) beyond what the brief listed, since the pie chart requirement asks for spending distribution &quot;by category&quot; and there is nothing else in the data to group by otherwise.</p>
+<p>Balance rule, matching the sample transcript in the brief: <code>balance = sum(debit amounts) - sum(credit amounts)</code>. Debit is money in and credit is money out in this assignment's own terms, the reverse of formal accounting language, worth a code comment so nobody &quot;corrects&quot; it later.</p>
+<h2>Data Storage: CSV Now, Database Later</h2>
+<p><strong>Phase 1, CSV files:</strong></p>
+<table>
+<thead>
+<tr>
+<th>File</th>
+<th>Columns</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>users.csv</code></td>
+<td>user_id, name, email, password_hash</td>
+</tr>
+<tr>
+<td><code>transactions.csv</code></td>
+<td>transaction_id, user_id, type, amount, category, description, date</td>
+</tr>
+<tr>
+<td><code>savings.csv</code></td>
+<td>savings_id, user_id, active, percentage</td>
+</tr>
+<tr>
+<td><code>loans.csv</code></td>
+<td>loan_id, user_id, principal_amount, interest_rate, repayment_period_months, outstanding_balance, status, created_at</td>
+</tr>
+<tr>
+<td><code>banks.csv</code></td>
+<td>bank_id, bank_name, interest_rate (seeded once with the 6 banks from the brief)</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Phase 2, MySQL:</strong> each CSV file becomes a table with the same columns, plus real foreign keys (<code>transactions.user_id</code> references <code>users.user_id</code>, and so on) and auto-increment primary keys instead of the manual &quot;max ID plus one&quot; logic the CSV version needs. Migration means writing a <code>MySql*Repository</code> class per entity behind the same interface as the CSV version, then pointing the app at it. No changes needed in <code>service/</code> or <code>controller/</code>.</p>
+<h2>GUI Design</h2>
+<pre class="mermaid">flowchart LR
+    Start([Start]) --&gt; Menu{Login or Register}
+    Menu --&gt;|Register| Reg[Register View]
+    Menu --&gt;|Login| Log[Login View]
+    Reg --&gt; Log
+    Log --&gt;|Success| Dash[Dashboard]
+    Dash --&gt; Deb[Debit / Credit]
+    Dash --&gt; Hist[History + Filters]
+    Dash --&gt; Sav[Savings]
+    Dash --&gt; Ln[Loan]
+    Dash --&gt; Pred[Interest Predictor]
+    Dash --&gt; Chart[Charts]
+    Dash --&gt; Out([Logout])
+</pre>
+<p>The dashboard uses one main window with views swapped in and out of a center pane, rather than a new window per screen. The Charts view has three tabs: spending distribution by category (pie chart), balance trend over time (line chart), and loan repayment progress (bar chart), all using JavaFX's built-in <code>javafx.scene.chart</code> package. A reminder banner appears on the dashboard if a loan is overdue, checked once at login.</p>
+<h2>Validation Rules</h2>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Rule</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Email</td>
+<td>Standard format, <a href="mailto:name@domain.com">name@domain.com</a></td>
+</tr>
+<tr>
+<td>Password</td>
+<td>Minimum 8 characters, at least one letter, one digit, one special character</td>
+</tr>
+<tr>
+<td>Confirm password</td>
+<td>Must match password exactly</td>
+</tr>
+<tr>
+<td>Name</td>
+<td>Letters, numbers, and spaces only</td>
+</tr>
+<tr>
+<td>Transaction amount</td>
+<td>Positive, and below a set ceiling (e.g. 1,000,000)</td>
+</tr>
+<tr>
+<td>Transaction date</td>
+<td>Auto-recorded as today, never in the future</td>
+</tr>
+<tr>
+<td>Description</td>
+<td>Max 100 characters</td>
+</tr>
+</tbody>
+</table>
+<h2>Project Structure</h2>
+<pre><code>LedgerSystem/
+├── pom.xml
+├── data/
+│   ├── users.csv
+│   ├── transactions.csv
+│   ├── savings.csv
+│   ├── loans.csv
+│   └── banks.csv
+├── src/
+│   └── main/
+│       ├── java/
+│       │   └── com/ledgersystem/
+│       │       ├── Main.java
+│       │       ├── model/
+│       │       │   ├── User.java
+│       │       │   ├── Transaction.java
+│       │       │   ├── Savings.java
+│       │       │   ├── Loan.java
+│       │       │   └── Bank.java
+│       │       ├── repository/
+│       │       │   ├── UserRepository.java
+│       │       │   ├── TransactionRepository.java
+│       │       │   ├── SavingsRepository.java
+│       │       │   ├── LoanRepository.java
+│       │       │   ├── BankRepository.java
+│       │       │   └── csv/
+│       │       │       ├── CSVManager.java
+│       │       │       ├── CsvUserRepository.java
+│       │       │       ├── CsvTransactionRepository.java
+│       │       │       ├── CsvSavingsRepository.java
+│       │       │       ├── CsvLoanRepository.java
+│       │       │       └── CsvBankRepository.java
+│       │       ├── service/
+│       │       │   ├── AuthService.java
+│       │       │   ├── LedgerService.java
+│       │       │   ├── SavingsService.java
+│       │       │   ├── LoanService.java
+│       │       │   ├── InterestPredictorService.java
+│       │       │   ├── HistoryService.java
+│       │       │   └── ChartService.java
+│       │       ├── controller/
+│       │       │   ├── LoginController.java
+│       │       │   ├── RegisterController.java
+│       │       │   ├── DashboardController.java
+│       │       │   ├── TransactionController.java
+│       │       │   ├── HistoryController.java
+│       │       │   ├── SavingsController.java
+│       │       │   ├── LoanController.java
+│       │       │   ├── PredictorController.java
+│       │       │   └── ChartsController.java
+│       │       └── util/
+│       │           ├── Validator.java
+│       │           ├── PasswordHasher.java
+│       │           ├── SessionManager.java
+│       │           └── CSVExporter.java
+│       └── resources/
+│           └── com/ledgersystem/
+│               ├── fxml/
+│               │   ├── login.fxml
+│               │   ├── register.fxml
+│               │   ├── dashboard.fxml
+│               │   ├── transaction.fxml
+│               │   ├── history.fxml
+│               │   ├── savings.fxml
+│               │   ├── loan.fxml
+│               │   ├── predictor.fxml
+│               │   └── charts.fxml
+│               └── css/
+│                   └── style.css
+└── README.md
+</code></pre>
+<p><code>repository/</code> holds the interfaces at the top level and the CSV implementations in <code>repository/csv/</code>. When Phase 2 starts, a <code>repository/mysql/</code> package gets added alongside it, same interfaces, different implementation.</p>
+<h2>Getting Started</h2>
+<p><strong>Prerequisites:</strong> JDK 17+, IntelliJ IDEA, Maven (bundled with IntelliJ).</p>
+<ol>
+<li>Clone the repo and open it in IntelliJ as a Maven project.</li>
+<li>Let IntelliJ download dependencies from <code>pom.xml</code> (JavaFX, jBCrypt).</li>
+<li>Run <code>Main.java</code>.</li>
+<li>The <code>data/</code> folder is created with empty CSVs on first run if it doesn't exist yet.</li>
+</ol>
+<h2>Development Roadmap</h2>
+<p><strong>Phase 1: Core features on CSV</strong></p>
+<ol>
+<li>Model classes</li>
+<li>Repository interfaces and CSV implementations, tested by printing loaded rows</li>
+<li><code>AuthService</code> plus login and register views</li>
+<li><code>LedgerService</code> plus debit/credit view and balance display</li>
+<li><code>HistoryService</code> plus history view (table first, then filters, sort, export)</li>
+<li><code>SavingsService</code> plus savings view</li>
+<li><code>LoanService</code> plus loan view and overdue check</li>
+</ol>
+<p><strong>Phase 2: Remaining extras</strong>
+8. <code>InterestPredictorService</code> plus predictor view
+9. Reminder banner on login
+10. <code>ChartService</code> plus charts view (pie, line, bar)
+11. Polish: validation messages, empty states, confirmation dialogs</p>
+<p><strong>Phase 3: Database migration</strong>
+12. Set up local MySQL, create tables matching the CSV schema
+13. Write <code>MySql*Repository</code> classes implementing the existing interfaces
+14. Point the app at the MySQL repositories, CSV files become a fallback or are dropped</p>
+<h2>Open Design Questions</h2>
+<p>Worth confirming with your groupmate or lecturer before you build these:</p>
+<ul>
+<li><strong>Loan repayment formula.</strong> The brief just says &quot;calculate total repayment based on principal and interest rate.&quot; A reasonable default: <code>totalRepayment = principal + (principal * interestRate/100 * repaymentPeriodMonths/12)</code>.</li>
+<li><strong>Savings percentage scope.</strong> The brief says the percentage applies &quot;to the next debit,&quot; which reads as one-time. This plan applies it to every debit going forward once activated, since a one-time deduction is an odd feature to build a whole settings screen for.</li>
+</ul>
+<h2>Team</h2>
+<ul>
+<li>Tanvir Hossain</li>
+<li><em>(add your groupmates here)</em></li>
+</ul>
+
+
+<!--claude-mermaid-runtime-begin:3477-->
+<style>.mermaid-diagram{margin-block:4px}.mermaid-diagram svg{display:block;margin:0 auto;max-width:100%;height:auto}</style>
+<script src="/_runtime/mermaid-11.16.1.min.js"></script>
+<script>(function(){
+var CFG={"palettes":{"light":{"surface":"#f4efe4","text":"#42392e","line":"#8a7f6d","border":"#7a6c52","bg":"#fffdf8"},"dark":{"surface":"#262b34","text":"#f2f3f5","line":"#a8adb8","border":"#9aa4b8","bg":"#1f232b"}}};
+if(typeof mermaid==='undefined')return;
+var pres=Array.prototype.slice.call(document.querySelectorAll('pre.mermaid')).filter(function(p){if(p.hasAttribute('data-claude-mermaid-claimed'))return false;p.setAttribute('data-claude-mermaid-claimed','1');return true;});
+if(!pres.length)return;
+var mq=window.matchMedia?window.matchMedia('(prefers-color-scheme: dark)'):null;
+var root=document.documentElement;
+var items=pres.map(function(pre){
+var mount=document.createElement('div');mount.className='mermaid-diagram';
+return {pre:pre,mount:mount,src:pre.textContent||''};
+});
+var seq=0;
+var renderGen=0;
+var lastKey='';
+function pageBg(fallback){
+var els=[document.body,document.documentElement];
+for(var i=0;i<els.length;i++){
+var c=els[i]&&getComputedStyle(els[i]).backgroundColor;
+if(c&&c!=='transparent'&&c!=='rgba(0, 0, 0, 0)')return c;
+}
+return fallback;
+}
+function render(){
+var theme=root.getAttribute('data-theme');
+var dark=theme==='dark'||(!!(mq&&mq.matches)&&theme!=='light');
+var pal=dark?CFG.palettes.dark:CFG.palettes.light;
+var bg=pageBg(pal.bg);
+var key=(dark?'d':'l')+'|'+bg;
+if(key===lastKey)return;
+lastKey=key;
+var gen=++renderGen;
+var font=getComputedStyle(document.body).fontFamily||'sans-serif';
+var nat={useMaxWidth:false};
+mermaid.initialize({
+startOnLoad:false,securityLevel:'strict',theme:'base',
+flowchart:nat,sequence:nat,er:nat,state:nat,class:nat,pie:nat,
+gantt:nat,journey:nat,timeline:nat,gitGraph:nat,mindmap:nat,xyChart:nat,
+quadrantChart:nat,sankey:nat,c4:nat,requirement:nat,block:nat,
+packet:nat,kanban:nat,architecture:nat,radar:nat,
+themeVariables:{background:bg,mainBkg:pal.surface,primaryColor:pal.surface,
+primaryTextColor:pal.text,lineColor:pal.line,primaryBorderColor:pal.border,
+nodeBorder:pal.border,clusterBorder:pal.border,edgeLabelBackground:bg,
+clusterBkg:'rgba(127,127,127,0.07)',titleColor:pal.text,
+darkMode:dark,rowOdd:bg,rowEven:'rgba(127,127,127,0.07)',
+attributeBackgroundColorOdd:bg,attributeBackgroundColorEven:'rgba(127,127,127,0.07)',
+fontSize:'16px',fontFamily:font},
+themeCSS:'.node rect, .node circle, .node polygon, .node path, .cluster rect { stroke-width: 2px; }'
+});
+items.forEach(function(it){
+var id='claude-mermaid-'+seq++;
+mermaid.render(id,it.src).then(function(r){
+if(gen!==renderGen)return;
+var prev=it.pre.previousElementSibling;
+if(prev&&prev.className==='mermaid-diagram'&&prev!==it.mount)return;
+it.mount.innerHTML=r.svg;
+if(!it.mount.parentNode)it.pre.parentNode.insertBefore(it.mount,it.pre);
+it.pre.style.display='none';
+},function(){
+var scratch=document.getElementById(id);
+if(scratch)scratch.parentNode.removeChild(scratch);
+scratch=document.getElementById('d'+id);
+if(scratch)scratch.parentNode.removeChild(scratch);
+if(gen!==renderGen)return;
+if(it.mount.parentNode)it.mount.parentNode.removeChild(it.mount);
+it.pre.style.display='';
+});
+});
+}
+render();
+if(mq&&mq.addEventListener)mq.addEventListener('change',render);
+if(typeof MutationObserver!=='undefined')new MutationObserver(render).observe(root,{attributes:true,attributeFilter:['data-theme']});
+})();</script>
+<!--claude-mermaid-runtime-end-->
+</body></html>

@@ -1,0 +1,8 @@
+transaction_id,user_id,type,amount,category,description,date
+1,1,debit,10.0,Food,Nasi goreng ayam,2026-09-23
+2,1,debit,590.0,Food,Total food buget,2026-09-23
+3,1,credit,10.0,Food,Nasi Goreng Ayam,2026-09-23
+4,1,debit,100.0,Transport,Transportation cost,2026-09-23
+5,1,credit,10.0,Savings,Auto-savings (10% of debit),2026-09-23
+6,1,debit,700.0,Rent,Home rent,2026-09-24
+7,1,credit,70.0,Savings,Auto-savings (10% of debit),2026-09-24

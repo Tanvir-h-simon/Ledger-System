@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+
+<StackPane style="-fx-background-color: #f7f9fc; -fx-padding: 24 40;"
+           xmlns="http://javafx.com/javafx/21"
+           xmlns:fx="http://javafx.com/fxml/1"
+           fx:controller="com.ledgersystem.controller.PredictorController">
+
+    <VBox spacing="12" maxWidth="700" alignment="TOP_LEFT"
+          style="-fx-background-color: white;
+                 -fx-background-radius: 10;
+                 -fx-border-color: #e2e8f0;
+                 -fx-border-width: 1.5;
+                 -fx-border-radius: 10;">
+        <padding>
+            <Insets top="28" right="36" bottom="28" left="36"/>
+        </padding>
+
+        <Label text="Deposit Interest Predictor"
+               style="-fx-font-size: 18px; -fx-font-weight: bold; -fx-text-fill: #1e293b;"/>
+        <Label text="See how much interest you would earn at each bank"
+               style="-fx-text-fill: #64748b;"/>
+
+        <Label text="Deposit Amount" style="-fx-font-weight: bold; -fx-text-fill: #374151;"/>
+        <TextField fx:id="amountField" promptText="e.g. 10000" maxWidth="Infinity"/>
+
+        <Label text="Duration (months)" style="-fx-font-weight: bold; -fx-text-fill: #374151;"/>
+        <HBox spacing="12" alignment="CENTER_LEFT">
+            <TextField fx:id="monthsField" promptText="e.g. 12" HBox.hgrow="ALWAYS"/>
+            <Button text="Calculate" prefWidth="140" onAction="#handleCalculate"/>
+        </HBox>
+
+        <Label text="bank  |  rate  |  interest earned  |  total"
+               style="-fx-text-fill: #94a3b8; -fx-font-size: 11px;"/>
+
+        <!-- Results list grows to fill all remaining card height -->
+        <ListView fx:id="resultList" VBox.vgrow="ALWAYS"/>
+
+        <Label fx:id="messageLabel" wrapText="true"/>
+    </VBox>
+
+</StackPane>
