@@ -47,8 +47,7 @@ A desktop personal finance ledger built for WIX1002 (Assignment Topic 2). Users 
 | Language | Java 21 | Course requirement |
 | GUI | JavaFX (FXML + CSS) | Modern successor to Swing. Separates layout (FXML) and styling (CSS) from logic, closer to how real frontend teams work, and gives you exposure to a more current toolkit. Ships with its own chart components (PieChart, LineChart, BarChart), which covers the Data Visualization extra without a third-party library. |
 | Build tool | Maven | Manages the JavaFX and bcrypt dependencies, standard for real Java projects |
-| Storage (Phase 1) | CSV files | Matches the brief, no server setup needed while the rest of the app is built |
-| Storage (Phase 2) | MySQL | Free, lightweight local setup (MySQL Community Server), huge documentation base, and the database most commonly used in student and industry projects. Oracle works too if your course specifically requires it, but it is heavier to install locally for no real benefit here. |
+| Storage | CSV files | Matches the brief, no server setup needed while the rest of the app is built |
 | Password hashing | jBCrypt | Simple, well-known bcrypt wrapper for Java |
 
 JavaFX needs one extra setup step Swing would not: since Java 11 it is not bundled with the JDK, so it is added as a Maven dependency (`org.openjfx:javafx-controls`, `javafx-fxml`) plus a small Maven plugin to run it. IntelliJ handles this without much friction once `pom.xml` is set up.
